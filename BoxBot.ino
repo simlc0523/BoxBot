@@ -48,7 +48,7 @@ void loop() {
 				while(1){};
 				break;
 			case 1: //1 - line follower
-        motion.calibrate(5.5);
+        motion.calibrate(4.0);
 				followLine(1);
 				break;
 			case 2: //2 - light follower
@@ -125,10 +125,10 @@ void followLine(int key)
   Serial.print(rightReading);
   Serial.println();
 
-    if(leftReading < 700)
-      motion.increaseRotation(5, -1);
-    else if(rightReading < 700)
-      motion.increaseRotation(5, 1);
+    if(leftReading < 600)
+      motion.moveRight(100, 20);
+    else if(rightReading < 600)
+      motion.moveLeft(100, 20);
     else
       motion.moveBothWheels(LINE_FOLLOW_SPEED, 35);
 /*
